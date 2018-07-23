@@ -62,6 +62,10 @@ trait ParseHttpTrait
     protected static function getQuery($get = false)
     {
         $parsedUrl = self::getUrl(true);
+        if(!isset($parsedUrl['query'])){
+            return null;
+        }
+
         parse_str($parsedUrl['query'], $query);
 
         $data = new Dotify($query);
